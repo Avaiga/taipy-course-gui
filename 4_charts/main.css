@@ -1,0 +1,13 @@
+.apply_button {
+    margin-top: 158px;
+}
+
+.taipy-button {
+    width: 60%
+}
+
+strong,
+b {
+    font-weight: bold;
+    color: var(--color-primary);
+}
