@@ -134,3 +134,11 @@ tmp
 
 # VSCode
 .vscode/
+
+# Packages
+*.tar.gz
+
+# Taipy
+user_data/
+config.toml
+.taipy/

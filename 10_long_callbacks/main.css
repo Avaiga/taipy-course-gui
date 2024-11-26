@@ -1,0 +1,5 @@
+strong,
+b {
+    font-weight: bold;
+    color: var(--color-primary);
+}
