@@ -1,0 +1,193 @@
+{
+	"meta": {
+		"version": "2.992.8836",
+		"fileFormatVersion": "0.3",
+		"date": "2025-02-20T11:58:49.322+01:00",
+		"name": "new_charts",
+		"description": "",
+		"groupName": "",
+		"tags": [],
+		"schedulerLogOff": true
+	},
+	"data": {
+		"datanodes": []
+	},
+	"libraries": {
+		"pyodideStandard": [],
+		"pyodideMicropip": []
+	},
+	"scaling": {
+		"widthPx": 1282,
+		"heightPx": 610,
+		"scrollWidthPx": 1282,
+		"scrollHeightPx": 610,
+		"widthVw": 83.46354166666667,
+		"heightVh": 77.11757269279393,
+		"scrollWidthVw": 83.46354166666667,
+		"scrollHeightVh": 77.11757269279393,
+		"scalingMethod": "scaleTwh",
+		"media": "large",
+		"colDims": null
+	},
+	"device": {
+		"cols": {
+			"valueRow": "none",
+			"valueCol": "1",
+			"maxCells": 0,
+			"maxCols": 0,
+			"classType": ""
+		},
+		"droppers": {},
+		"backgroundColor": "var(--widget-color-0)",
+		"inheritThemeBackgroundColor": true,
+		"theme": "default"
+	},
+	"dashboard": {
+		"plotlyPyGenericA": {
+			"layout": {
+				"top": "25.2845vh",
+				"left": "2.60417vw",
+				"height": "46.1441vh",
+				"width": "49.2188vw",
+				"minHeight": "32px",
+				"minWidth": "50px",
+				"z-index": "1"
+			},
+			"container": {
+				"instanceId": "plotlyPyGenericA",
+				"modelJsonId": "plotlyPyGeneric"
+			},
+			"modelParameters": {
+				"enforceTextColor": true,
+				"textColor": "var(--widget-color)",
+				"enforceBackgroundTransparency": true,
+				"hideModeBar": false,
+				"showWidget": true,
+				"enableWidget": true
+			},
+			"modelHiddenParams": {
+				"fig": {
+					"data": [
+						{
+							"type": "bar",
+							"x": [],
+							"y": []
+						}
+					],
+					"layout": {
+						"paper_bgcolor": "rgba(0,0,0,0)",
+						"plot_bgcolor": "rgba(0,0,0,0)",
+						"template": {
+							"layout": {
+								"xaxis": {
+									"gridcolor": "var(--widget-plotly-background-color)"
+								},
+								"yaxis": {
+									"gridcolor": "var(--widget-plotly-background-color)"
+								},
+								"zaxis": {
+									"gridcolor": "var(--widget-plotly-background-color)"
+								},
+								"colorway": [
+									"var(--widget-color-2)",
+									"var(--widget-color-5)",
+									"var(--widget-color-6)",
+									"var(--widget-color-7)",
+									"var(--widget-color-8)",
+									"var(--widget-color-9)",
+									"var(--widget-color-10)",
+									"var(--widget-color-11)",
+									"var(--widget-color-12)",
+									"var(--widget-color-13)"
+								],
+								"font": {
+									"color": "var(--widget-color)"
+								}
+							}
+						}
+					}
+				},
+				"selection": [
+					{}
+				]
+			}
+		},
+		"flatUiSelectA": {
+			"layout": {
+				"top": "20.2276vh",
+				"left": "2.60417vw",
+				"height": "5.05689vh",
+				"width": "19.0104vw",
+				"minHeight": "27px",
+				"minWidth": "40px",
+				"z-index": "2"
+			},
+			"container": {
+				"instanceId": "flatUiSelectA",
+				"modelJsonId": "flatUiSelect"
+			},
+			"modelParameters": {
+				"label": "Category",
+				"inheritLabelFromData": false,
+				"displayLabel": true,
+				"labelFontSize": 1,
+				"labelColor": "#b2e2d0",
+				"labelFontFamily": "var(--widget-font-family)",
+				"selectWidthProportion": "70%",
+				"isNumber": false,
+				"isBoolean": false,
+				"selectValueFontFamily": "var(--widget-font-family)",
+				"selectValueFontSize": 0.5,
+				"selectedValueColor": "var(--widget-select-option-highlighted-text)",
+				"selectedItemDefaultColor": "var(--widget-select-option-highlighted-color)",
+				"selectedItemHoverColor": "#45836b",
+				"isKeyValuePairs": false,
+				"showWidget": true,
+				"enableWidget": true
+			},
+			"modelHiddenParams": {
+				"keys": [],
+				"values": [],
+				"selectedValue": ""
+			}
+		}
+	},
+	"connections": {
+		"plotlyPyGenericA": {
+			"fig": {
+				"name": "fig",
+				"dataNode": "map_fig",
+				"dataFields": []
+			},
+			"selection": {
+				"name": "selection",
+				"dataNode": "None",
+				"dataFields": []
+			}
+		},
+		"flatUiSelectA": {
+			"keys": {
+				"name": "keys",
+				"dataNode": "categories",
+				"dataFields": []
+			},
+			"values": {
+				"name": "values",
+				"dataNode": "categories",
+				"dataFields": []
+			},
+			"selectedValue": {
+				"name": "selectedValue",
+				"dataNode": "selected_category",
+				"dataFields": []
+			}
+		}
+	},
+	"exportOptions": "ajustToTargetWindow",
+	"pages": {
+		"pageNames": [],
+		"defaultPage": {}
+	},
+	"checkExportOptions": true,
+	"navBarNotification": false
+}

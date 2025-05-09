@@ -111,4 +111,4 @@ with tgb.Page() as page:
         tgb.html("br")
         tgb.table(data="{data}")
 
-Gui(page=page).run(title="Sales", dark_mode=False, debug=True)
+Gui(page=page).run(title="Sales", dark_mode=False, debug=False, port=7237)
