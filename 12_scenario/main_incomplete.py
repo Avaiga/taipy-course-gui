@@ -47,22 +47,23 @@ initial_dataset_cfg = Config.configure_data_node(
 )
 
 
-# We assume the current day is the 26th of July 2021.
+# TODO: Replace the ... with the correct configuration for the data nodes
+# We assume the current day is the 26th of July 2021. This is our default data
 # This day can be changed to simulate multiple executions of scenarios on different days
 day_cfg = ...
 ## Remaining Data Node
 cleaned_dataset_cfg = ...
 predictions_cfg = ...
+evaluation_cfg = ...
 
+
+# TODO: Replace the ... with the correct configuration for the tasks
 # Task config objects
 clean_data_task_cfg = ...
-
 predict_task_cfg = ...
-
-evaluation_cfg = ...
 evaluate_task_cfg = ...
 
-#
+
 # Configure our scenario config.
 scenario_cfg = Config.configure_scenario(
     id="scenario",

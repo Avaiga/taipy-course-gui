@@ -65,6 +65,7 @@ def apply_changes(state):
         "yaxis": {"title": "Revenue (USD)"},
         "title": f"Sales by State for {state.selected_category} - {state.selected_subcategory}",
     }
+
     state.map_fig = generate_map(state.data)
 
 

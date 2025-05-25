@@ -99,6 +99,18 @@ with tgb.Page() as page:
             layout="{layout}",
         )
         tgb.html("br")
+
+        # TODO: Put the table inside a card
         tgb.table(data="{data}")
+
+
+# TODO: Uncomment and change the stylekit with your own colors
+# stylekit = {
+#         "color_primary": "#572c5f",
+#         "color_secondary": "#e4e1dc",
+#         "color_background_light": "e4e1dc",
+#     }
+# Gui(page=page).run(title="Sales", dark_mode=False, stylekit=stylekit)
+
 
 Gui(page=page).run(title="Sales", dark_mode=False, debug=True)

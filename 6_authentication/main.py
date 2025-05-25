@@ -137,6 +137,7 @@ with tgb.Page() as page_1:
                             dropdown=True,
                         )
                     with tgb.part(class_name="text-center"):
+                        # TODO: Make the button inactive if the user is not an admin
                         tgb.button(
                             "Apply",
                             class_name="plain apply_button",
@@ -153,7 +154,7 @@ with tgb.Page() as page_1:
             )
             tgb.chart(figure="{map_fig}")
         tgb.html("br")
-        with tgb.part(render="{is_admin.get_traits(credentials)}"):
+        with tgb.part(render=lambda credentials: is_admin.get_traits(credentials)):
             tgb.table(data="{data}")
 
 
