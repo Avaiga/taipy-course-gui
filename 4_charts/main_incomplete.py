@@ -1,6 +1,7 @@
-from taipy.gui import Gui, Icon, navigate
+from taipy.gui import Gui
 import taipy.gui.builder as tgb
 import pandas as pd
+import plotly.graph_objects as go
 
 from chart import generate_map
 
@@ -64,10 +65,11 @@ def apply_changes(state):
         "yaxis": {"title": "Revenue (USD)"},
         "title": f"Sales by State for {state.selected_category} - {state.selected_subcategory}",
     }
-    state.map_fig = generate_map(state.data)
+
+    # TODO: Update the map figure with the new data
 
 
-with tgb.Page() as page_1:
+with tgb.Page() as page:
     with tgb.part(class_name="container"):
         tgb.text("# Sales by **State**", mode="md")
         with tgb.part(class_name="card"):
@@ -110,31 +112,4 @@ with tgb.Page() as page_1:
         tgb.html("br")
         tgb.table(data="{data}")
 
-
-def menu_option_selected(state, action, info):
-    page = info["args"][0]
-    navigate(state, to=page)
-
-
-# TODO: add an about page to discuss the application and its features
-# TODO: You don't need to have an icon, just write the title of the page
-with tgb.Page() as root_page:
-    tgb.menu(
-        label="Menu",
-        lov=[
-            ("page1", Icon("images/map.png", "Sales")),
-            ("page2", Icon("images/person.png", "Account")),
-        ],
-        on_action=menu_option_selected,
-    )
-
-with tgb.Page() as page_2:
-    tgb.text("# Account **Management**", mode="md")
-    tgb.button("Logout", class_name="plain login-button", width="50px")
-
-
-# TODO: add an about page to discuss the application and its features
-pages = {"/": root_page, "page1": page_1, "page2": page_2}
-
-
-Gui(pages=pages).run(title="Sales", dark_mode=False, debug=True)
+Gui(page=page).run(title="Sales", dark_mode=False, debug=False, port=7237)

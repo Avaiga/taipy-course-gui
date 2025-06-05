@@ -65,6 +65,7 @@ def apply_changes(state):
         "yaxis": {"title": "Revenue (USD)"},
         "title": f"Sales by State for {state.selected_category} - {state.selected_subcategory}",
     }
+
     state.map_fig = generate_map(state.data)
 
 
@@ -111,4 +112,4 @@ with tgb.Page() as page:
         tgb.html("br")
         tgb.table(data="{data}")
 
-Gui(page=page).run(title="Sales", dark_mode=False, debug=True)
+Gui(page=page).run(title="Sales", dark_mode=False, debug=False, port=7237)
