@@ -1,25 +1,21 @@
-from taipy.gui import Gui, Icon, navigate
-import taipy.gui.builder as tgb
-import pandas as pd
-
-from chart import generate_map
-
 import os
-from taipy.gui import notify
-import taipy.gui.builder as tgb
-from taipy.auth import hash_taipy_password, AnyOf, Credentials, Authenticator
-import taipy.enterprise.gui as tp_enterprise
+from typing import Optional
 
+import pandas as pd
+import taipy as tp
+import taipy.gui.builder as tgb
+from chart import generate_map
+from taipy import Config
+from taipy.auth import AnyOf, Credentials
+from taipy.auth.exceptions import AuthenticatorError, InvalidCredentials
+from taipy.gui import Gui, Icon, navigate, notify
 
 os.environ["TAIPY_AUTH_HASH"] = "taipy"
 
-username = "login"
-
-credentials = Credentials(user_name=username, roles=[])
 
 passwords = {
-    "Florian": hash_taipy_password("mp153ap63"),
-    "Alexandre": hash_taipy_password("m4a1m995"),
+    "Florian": tp.auth.hash_taipy_password("mp153ap63"),
+    "Alexandre": tp.auth.hash_taipy_password("m4a1m995"),
 }
 
 roles = {
@@ -27,25 +23,37 @@ roles = {
     "Alexandre": ["TAIPY_READER"],
 }
 
-authenticator = Authenticator(protocol="taipy", roles=roles, passwords=passwords)
+Config.configure_authentication(protocol="taipy", roles=roles, passwords=passwords)    
 
+credentials: Optional[Credentials] = None
 is_admin = AnyOf("admin", True, False)
 
+def handle_logout(state):
+    tp.enterprise.gui.logout(state)
+    state.credentials = None
+    notify(state, "error", "You have logged out.")
+    navigate(state, "/", force=True)
 
-def on_login(state, id, login_args):
-    state.username, password = login_args["args"][:2]
-    try:
-        state.credentials = tp_enterprise.login(state, state.username, password)
-        notify(state, "success", f"Logged in as {state.username}...")
-        navigate(state, "page1", force=True)
-    except Exception as e:
-        notify(state, "error", f"Login failed: {e}")
-        print(f"Login exception: {e}")
-        navigate(state, "login", force=True)
+def on_login(state, id, payload):
+    username, password = payload["args"][:2]
+    if username is None:  # The user canceled the login request
+        return navigate(state, "/", force=True)
+    state.credentials = tp.enterprise.gui.login(state, username, password)
+    # Failed authentication would raise an AuthenticatorError exception, handled by main.on_exception
+    notify(state, "success", f"You are now logged in as {state.credentials.user_name}.")
+    navigate(state, "/", force=True)
 
+def on_exception(state, function_name: str, exception):
+    print(f"Exception in {function_name}: {exception}")
+    if isinstance(exception, InvalidCredentials) or isinstance(exception, AuthenticatorError):
+        handle_logout(state)
 
-def go_to_login(state):
-    navigate(state, "login", force=True)
+def button_loginout(state):
+    """Handle login/logout button click."""
+    
+    if state.credentials is None:
+        return navigate(state, "login", force=True)
+    handle_logout(state)
 
 
 data = pd.read_csv("data.csv")
@@ -111,7 +119,7 @@ def apply_changes(state):
     state.map_fig = generate_map(state.data)
 
 
-with tgb.Page() as page_1:
+with tgb.Page() as sales_page:
     with tgb.part(class_name="container"):
         tgb.text("# Sales by **State**", mode="md")
         with tgb.expandable(title="Filters", expanded=False):
@@ -154,7 +162,7 @@ with tgb.Page() as page_1:
             )
             tgb.chart(figure="{map_fig}")
         tgb.html("br")
-        with tgb.part(render=lambda credentials: is_admin.get_traits(credentials)):
+        with tgb.part(render=lambda credentials: credentials and is_admin.get_traits(credentials)):
             tgb.table(data="{data}")
 
 
@@ -167,8 +175,8 @@ with tgb.Page() as root_page:
     tgb.menu(
         label="Menu",
         lov=[
-            ("page1", Icon("images/map.png", "Sales")),
-            ("page2", Icon("images/person.png", "Account")),
+            ("sales", Icon("images/map.png", "Sales")),
+            ("account", Icon("images/person.png", "Account")),
         ],
         on_action=menu_option_selected,
     )
@@ -176,18 +184,19 @@ with tgb.Page() as root_page:
 with tgb.Page() as login_page:
     tgb.login("Welcome to Taipy!")
 
-with tgb.Page() as page_2:
+with tgb.Page() as account_page:
     tgb.text("# Account **Management**", mode="md")
     tgb.button(
-        "Logout", class_name="plain login-button", width="50px", on_action=go_to_login
+        lambda credentials: "Login" if credentials is None else "Logout",
+        class_name="plain login-button", width="50px", on_action=button_loginout
     )
 
 pages = {
     "/": root_page,
-    "page1": page_1,
-    "page2": page_2,
+    "sales": sales_page,
+    "account": account_page,
     "login": login_page,
 }
 
 
-Gui(pages=pages).run(title="Sales", dark_mode=False, debug=True)
+Gui(pages=pages).run(title="Sales", dark_mode=False)
