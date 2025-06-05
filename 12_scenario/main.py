@@ -134,4 +134,4 @@ pages = {
 
 if __name__ == "__main__":
     tp.Orchestrator().run()
-    tp.Gui(pages=pages).run(port=4999, title="Backend Demo", dark_mode=False)
+    tp.Gui(pages=pages).run(title="Backend Demo", dark_mode=False)
