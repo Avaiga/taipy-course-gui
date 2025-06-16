@@ -137,4 +137,4 @@ with tgb.Page() as page_2:
 pages = {"/": root_page, "page1": page_1, "page2": page_2}
 
 
-Gui(pages=pages).run(title="Sales", dark_mode=False, debug=True)
+Gui(pages=pages).run(title="Sales", dark_mode=False)

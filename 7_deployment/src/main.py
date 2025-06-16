@@ -189,4 +189,4 @@ pages = {
 }
 
 
-Gui(pages=pages).run(title="Sales", dark_mode=False, debug=True)
+Gui(pages=pages).run(title="Sales", dark_mode=False)
