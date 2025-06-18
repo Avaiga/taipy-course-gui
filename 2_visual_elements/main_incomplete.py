@@ -23,7 +23,7 @@ def change_category(state):
 
 
 with tgb.Page() as page:
-    # TODO: A selector to select the catgory
+    # TODO: A selector to select the category
     # TODO: A chart to visualize the data: x="State", y="Sales", type="bar", layout=layout
     # TODO: A table
     ...
