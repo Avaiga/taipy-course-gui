@@ -74,4 +74,4 @@ def on_change(state, var, val): ...
 
 page = Page("new_charts.xprjson")
 
-Gui(page=page).run(title="Sales", design=True, port=2542)
+Gui(page=page).run(title="Sales", design=True)

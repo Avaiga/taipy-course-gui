@@ -113,4 +113,4 @@ with tgb.Page() as page:
 # Gui(page=page).run(title="Sales", dark_mode=False, stylekit=stylekit)
 
 
-Gui(page=page).run(title="Sales", dark_mode=False, debug=True)
+Gui(page=page).run(title="Sales", dark_mode=False)
