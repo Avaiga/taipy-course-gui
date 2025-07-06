@@ -61,10 +61,10 @@ clf = train_classifier(iris)
 fig = plot_data(df)
 
 
-def on_change(state, var, val):
+def on_change(state, var_name, var_value):
 
-    if var == "input_data":
-        state.prediction = make_prediction(state, clf, val)
+    if var_name == "input_data":
+        state.prediction = make_prediction(state, clf, var_value)
 
 
 # Create a Taipy Designer Page instance with the resource handler

@@ -69,8 +69,8 @@ def apply_changes(state):
     state.map_fig = generate_map(state.data)
 
 
-def on_change(state, var, val):
-    if var == "selected_category":
+def on_change(state, var_name, var_value):
+    if var_name == "selected_category":
         change_category(state)
 
 
