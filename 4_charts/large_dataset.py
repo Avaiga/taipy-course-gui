@@ -30,4 +30,4 @@ with tgb.Page() as page:
     tgb.text("# Large dataset - Decimator", mode="md")
     tgb.chart(data="{data}", x="X", y="Y", mode="markers", decimator=decimator)
 
-Gui(page=page).run(title="Large dataset - Decimator", run_browser=False)
+Gui(page=page).run(title="Large dataset - Decimator")
