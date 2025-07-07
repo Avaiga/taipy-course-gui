@@ -61,7 +61,7 @@ clf = train_classifier(iris)
 fig = plot_data(df)
 
 
-def on_change(state, var, val):
+def on_change(state, var_name, var_value):
     # Change the prediction when input_data us changed
     ...
 

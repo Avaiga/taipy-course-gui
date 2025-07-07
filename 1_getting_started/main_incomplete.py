@@ -9,7 +9,7 @@ def compute_data(decay: int) -> list:
     return [cos(i / 6) * exp(-i * decay / 600) for i in range(100)]
 
 
-def on_change(state, var, val):
+def on_change(state, var_name, var_value):
     # TODO: First way with global callbacks: Implement the logic to update the data based on the slider value
     ...
 

@@ -69,7 +69,7 @@ def apply_changes(state):
     state.map_fig = generate_map(state.data)
 
 
-def on_change(state, var, val): ...
+def on_change(state, var_name, var_value): ...
 
 
 page = Page("new_charts.xprjson")
