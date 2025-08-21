@@ -77,7 +77,7 @@ with tgb.Page() as page:
                 with tgb.part():
                     tgb.text("Filter **From**", mode="md")
                     tgb.date("{start_date}")
-                    tgb.text("To")
+                    tgb.text("To", mode="md")
                     tgb.date("{end_date}")
                 with tgb.part():
                     tgb.text("Filter Product **Category**", mode="md")
@@ -112,4 +112,4 @@ with tgb.Page() as page:
         tgb.html("br")
         tgb.table(data="{data}")
 
-Gui(page=page).run(title="Sales", dark_mode=False)
+Gui(page=page).run(title="Sales", dark_mode=False, run_browser=False)
