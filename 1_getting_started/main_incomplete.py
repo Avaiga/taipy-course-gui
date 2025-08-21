@@ -2,7 +2,7 @@ from taipy.gui import Gui
 import taipy.gui.builder as tgb
 from math import cos, exp
 
-value = 10
+number = 10
 
 
 def compute_data(decay: int) -> list:
@@ -22,6 +22,6 @@ def slider_moved(state):
 with tgb.Page() as page:
     ...
 
-data = compute_data(value)
+data = compute_data(number)
 
 Gui(page=page).run()
