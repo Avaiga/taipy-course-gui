@@ -38,7 +38,7 @@ def evaluate(predictions, cleaned_dataset, day):
     return int(mae)
 
 
-## Input Data Nodes
+# Input Data Nodes
 initial_dataset_cfg = Config.configure_data_node(
     id="initial_dataset",
     storage_type="csv",
@@ -50,10 +50,8 @@ initial_dataset_cfg = Config.configure_data_node(
 # This day can be changed to simulate multiple executions of scenarios on different days
 day_cfg = Config.configure_data_node(id="day", default_data=dt.datetime(2021, 7, 26))
 
-## Remaining Data Node
-cleaned_dataset_cfg = Config.configure_data_node(
-    id="cleaned_dataset", storage_type="parquet", scope=Scope.GLOBAL
-)
+# Remaining Data Nodes
+cleaned_dataset_cfg = Config.configure_data_node(id="cleaned_dataset", storage_type="parquet", scope=Scope.GLOBAL)
 predictions_cfg = Config.configure_data_node(id="predictions")
 
 # Task config objects
@@ -82,7 +80,6 @@ evaluate_task_cfg = Config.configure_task(
     skippable=True,
 )
 
-#
 # Configure our scenario config.
 scenario_cfg = Config.configure_scenario(
     id="scenario",
@@ -90,7 +87,7 @@ scenario_cfg = Config.configure_scenario(
     frequency=Frequency.MONTHLY,
 )
 
-Config.export("config.toml")
+Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
 
 
 def update_date(state):
