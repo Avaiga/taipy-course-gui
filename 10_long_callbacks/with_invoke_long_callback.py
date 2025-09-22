@@ -81,4 +81,4 @@ if __name__ == "__main__":
             tgb.text("## Logs", mode="md")
             tgb.text("{logs}", mode="raw")
 
-    Gui(page).run(dark_mode=False)
+    Gui(page).run(dark_mode=False, server_config={"socketio": {"ping_interval": 1}})

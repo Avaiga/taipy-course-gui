@@ -53,4 +53,4 @@ with tgb.Page() as page:
         tgb.text("## Evolution of approximation", mode="md")
         tgb.chart("{pi_list}", layout="{layout}")
 
-Gui(page).run(dark_mode=False)
+Gui(page).run(dark_mode=False, server_config={"socketio": {"ping_interval": 1}})

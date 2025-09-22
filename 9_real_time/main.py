@@ -21,7 +21,7 @@ with tgb.Page() as page:
 
 gui = Gui(page=page)
 
-t = Thread(target=update_time, args=(gui,))
+t = Thread(target=update_time, args=(gui,), daemon=True)
 t.start()
 
-gui.run(title="Real-time data updates")
+gui.run(title="Real-time data updates", server_config={"socketio": {"ping_interval": 1}})
