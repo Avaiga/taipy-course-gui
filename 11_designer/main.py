@@ -42,7 +42,7 @@ def plot_data(df):
 
 def make_prediction(state, clf, input_data):
     df = pd.DataFrame(state.input_data, index=[0])
-    prediction = clf.predict(df)
+    prediction = clf.predict(df.values)
     return iris.target_names[prediction][0]
 
 
@@ -72,4 +72,4 @@ page = Page("iris_demo_page.xprjson")
 
 gui = Gui()
 gui.add_page("iris", page)
-gui.run(design=True)
+gui.run(design=True, run_browser=False)

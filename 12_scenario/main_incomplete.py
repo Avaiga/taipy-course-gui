@@ -20,22 +20,14 @@ def predict(cleaned_dataset: pd.DataFrame, day: dt.datetime):
     date_range = pd.date_range(start=pd.Timestamp(day), periods=30, freq="D")
     smooth_predictions = predictions.rolling(window=3).mean()
     smooth_predictions = smooth_predictions.round(2)
-    return pd.DataFrame(
-        {
-            "Date": date_range,
-            "Prediction": predictions,
-            "Smooth Prediction": smooth_predictions,
-        }
-    )
+    return pd.DataFrame({"Date": date_range, "Prediction": predictions, "Smooth Prediction": smooth_predictions})
 
 
 def evaluate(predictions, cleaned_dataset, day):
     print("     Evaluating")
-    expected = cleaned_dataset.loc[
-        cleaned_dataset["Date"] >= pd.Timestamp(day), "Value"
-    ][:30].reset_index(drop=True)
-    mae = ((predictions["Prediction"] - expected) ** 2).mean()
-    return int(mae)
+    expected = cleaned_dataset.loc[cleaned_dataset["Date"] >= pd.Timestamp(day), "Value"][:30].reset_index(drop=True)
+    mse = ((predictions["Prediction"] - expected) ** 2).mean()
+    return int(mse)
 
 
 # Input Data Nodes
