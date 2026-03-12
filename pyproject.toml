@@ -1,10 +1,17 @@
 [project]
 name = "taipy-course-gui"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.11"
+description = "Material for the Taipy onboarding course."
+requires-python = ">=3.10, <3.13"
 dependencies = [
-    "plotly>=6.0.1",
-    "taipy>=4.0.3",
+    "taipy-enterprise==4.1.1",
+    "plotly",
+    "ipykernel",
+    "nbformat",
 ]
+
+[tool.ruff]
+line-length = 120
+
+[tool.uv.sources]
+taipy-enterprise = { git = "ssh://git@github.com/Avaiga/taipy-enterprise.git", rev = "4.1.1" }
