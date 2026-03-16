@@ -1,9 +1,9 @@
+import datetime as dt
+
+import pandas as pd
 import taipy as tp
 import taipy.gui.builder as tgb
-from taipy import Config, Scope, Frequency
-
-import datetime as dt
-import pandas as pd
+from taipy import Config, Frequency, Scope
 
 
 def clean_data(initial_dataset: pd.DataFrame):

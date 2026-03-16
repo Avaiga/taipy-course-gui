@@ -1,6 +1,7 @@
-from taipy.gui import Gui, Markdown, State, invoke_long_callback, notify
-import taipy.gui.builder as tgb
 import time
+
+import taipy.gui.builder as tgb
+from taipy.gui import Gui, State, invoke_long_callback, notify
 
 
 def pi_approx(num_iterations: int):

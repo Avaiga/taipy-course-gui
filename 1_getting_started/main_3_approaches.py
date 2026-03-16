@@ -9,9 +9,10 @@ From the most general to the most specific:
 It is often best to start from the most specific and generalize as needed.
 """
 
-from taipy.gui import Gui
-import taipy.gui.builder as tgb
 from math import cos, exp
+
+import taipy.gui.builder as tgb
+from taipy.gui import Gui
 
 number = 10
 

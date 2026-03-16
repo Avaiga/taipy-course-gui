@@ -1,6 +1,6 @@
-from taipy.gui import Gui
-import taipy.gui.builder as tgb
 import pandas as pd
+import taipy.gui.builder as tgb
+from taipy.gui import Gui
 
 data = pd.read_csv("data.csv")
 chart_data = data.groupby("State")["Sales"].sum().sort_values(ascending=False).head(10).reset_index()

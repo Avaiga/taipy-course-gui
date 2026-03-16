@@ -1,10 +1,9 @@
-from taipy.gui import Gui
-from taipy.designer import Page
 import pandas as pd
+import plotly.express as px
 from sklearn import datasets
 from sklearn.ensemble import RandomForestClassifier
-import plotly.express as px
-
+from taipy.designer import Page
+from taipy.gui import Gui
 
 prediction = "--"
 

@@ -1,15 +1,11 @@
-from taipy.gui import Gui, Icon, navigate
-import taipy.gui.builder as tgb
-import pandas as pd
-
-from chart import generate_map
-
 import os
-from taipy.gui import notify
-import taipy.gui.builder as tgb
-from taipy.auth import hash_taipy_password, AnyOf, Credentials, Authenticator
-import taipy.enterprise.gui as tp_enterprise
 
+import pandas as pd
+import taipy.enterprise.gui as tp_enterprise
+import taipy.gui.builder as tgb
+from chart import generate_map
+from taipy.auth import AnyOf, Authenticator, Credentials, hash_taipy_password
+from taipy.gui import Gui, Icon, navigate, notify
 
 os.environ["TAIPY_AUTH_HASH"] = "taipy"
 

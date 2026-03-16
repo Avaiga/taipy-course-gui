@@ -1,8 +1,7 @@
-from taipy.gui import Gui, Icon, navigate
-import taipy.gui.builder as tgb
 import pandas as pd
-
+import taipy.gui.builder as tgb
 from chart import generate_map
+from taipy.gui import Gui, Icon, navigate
 
 data = pd.read_csv("data.csv")
 chart_data = data.groupby("State")["Sales"].sum().sort_values(ascending=False).head(10).reset_index()

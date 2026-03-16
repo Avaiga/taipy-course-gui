@@ -1,6 +1,6 @@
-from taipy.gui import Gui, Markdown, notify
-import taipy.gui.builder as tgb
 import pandas as pd
+import taipy.gui.builder as tgb
+from taipy.gui import Gui, notify
 
 
 def food_df_on_edit(state, var_name, payload):
@@ -31,7 +31,7 @@ def food_df_on_add(state, var_name, payload):
     empty_row = pd.DataFrame([[None for _ in state.food_df.columns]], columns=state.food_df.columns)
     state.food_df = pd.concat([empty_row, state.food_df], axis=0, ignore_index=True)
 
-    notify(state, "S", f"Added a new row.")
+    notify(state, "S", "Added a new row.")
 
 
 if __name__ == "__main__":

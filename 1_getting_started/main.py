@@ -1,6 +1,7 @@
-from taipy.gui import Gui
-import taipy.gui.builder as tgb
 from math import cos, exp
+
+import taipy.gui.builder as tgb
+from taipy.gui import Gui
 
 number = 10
 
