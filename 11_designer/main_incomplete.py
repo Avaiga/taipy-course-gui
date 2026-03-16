@@ -65,6 +65,7 @@ def on_change(state, var_name, var_value):
     # Change the prediction when input_data us changed
     ...
 
+
 # Create a Taipy Designer Page instance with the resource handler
 page = Page("new_iris_demo_page.xprjson")
 

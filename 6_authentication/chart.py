@@ -59,9 +59,7 @@ state_codes = {
 
 def generate_map(data: pd.DataFrame) -> go.Figure:
     map_data = data.groupby("State")["Sales"].sum().reset_index()
-    map_data["text"] = (
-        map_data["State"] + "<br>" + "Sales: $" + map_data["Sales"].astype(str)
-    )
+    map_data["text"] = map_data["State"] + "<br>" + "Sales: $" + map_data["Sales"].astype(str)
     map_data["codes"] = map_data["State"].map(state_codes)
 
     fig = go.Figure(

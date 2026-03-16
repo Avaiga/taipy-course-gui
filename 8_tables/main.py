@@ -28,9 +28,7 @@ def food_df_on_delete(state, var_name, payload):
 
 
 def food_df_on_add(state, var_name, payload):
-    empty_row = pd.DataFrame(
-        [[None for _ in state.food_df.columns]], columns=state.food_df.columns
-    )
+    empty_row = pd.DataFrame([[None for _ in state.food_df.columns]], columns=state.food_df.columns)
     state.food_df = pd.concat([empty_row, state.food_df], axis=0, ignore_index=True)
 
     notify(state, "S", f"Added a new row.")

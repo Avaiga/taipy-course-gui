@@ -3,13 +3,7 @@ import taipy.gui.builder as tgb
 import pandas as pd
 
 data = pd.read_csv("data.csv")
-chart_data = (
-    data.groupby("State")["Sales"]
-    .sum()
-    .sort_values(ascending=False)
-    .head(10)
-    .reset_index()
-)
+chart_data = data.groupby("State")["Sales"].sum().sort_values(ascending=False).head(10).reset_index()
 
 categories = list(data["Category"].unique())
 selected_category = "Furniture"
@@ -19,13 +13,7 @@ layout = {"yaxis": {"title": "Revenue (USD)"}, "title": "Sales by State"}
 
 def change_category(state):
     state.data = data[data["Category"] == state.selected_category]
-    state.chart_data = (
-        state.data.groupby("State")["Sales"]
-        .sum()
-        .sort_values(ascending=False)
-        .head(10)
-        .reset_index()
-    )
+    state.chart_data = state.data.groupby("State")["Sales"].sum().sort_values(ascending=False).head(10).reset_index()
     state.layout = {
         "yaxis": {"title": "Revenue (USD)"},
         "title": f"Sales by State for {state.selected_category}",

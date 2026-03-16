@@ -54,9 +54,7 @@ def on_action(state: State):
         state: The state of the application.
     """
     state.start_time = time.time()
-    invoke_long_callback(
-        state, pi_approx, [int(state.num_iterations)], heavy_status, [], 1000
-    )
+    invoke_long_callback(state, pi_approx, [int(state.num_iterations)], heavy_status, [], 1000)
 
 
 if __name__ == "__main__":
